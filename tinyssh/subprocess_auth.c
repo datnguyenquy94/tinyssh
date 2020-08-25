@@ -67,16 +67,17 @@ int subprocess_auth_checkpath_(char *path, long long pathlen, uid_t uid) {
 
     check(uid, path, "authorized_keys", &err);
 
-    do {
-        check(uid, path, 0, &err);
-        for (j = i; j >= 0; --j) {
-            if (path[j] == '/') {
-                path[j] = 0;
-                i = j;
-                break;
-            }
-        }
-    } while (j > 0);
+    // patch for kindlepw
+    // do {
+    //     check(uid, path, 0, &err);
+    //     for (j = i; j >= 0; --j) {
+    //         if (path[j] == '/') {
+    //             path[j] = 0;
+    //             i = j;
+    //             break;
+    //         }
+    //     }
+    // } while (j > 0);
     return (err == 0);
 }
 
